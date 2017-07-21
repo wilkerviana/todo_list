@@ -1,0 +1,31 @@
+{
+  "name": "learn_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "gulp": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wilker Viana",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-copy": "^1.0.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-stylus": "^2.6.0",
+    "gulp-watch": "^4.3.11",
+    "jshint": "^2.9.5",
+    "lodash": "^4.17.4",
+    "webpack-stream": "^3.2.0"
+  },
+  "dependencies": {
+    "imagemin": "^5.3.1"
+  }
+}
