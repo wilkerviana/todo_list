@@ -19,7 +19,7 @@ gulp.task('browserSync', ['build'], function(){
 
 	gulp.watch('src/**/*.js', ['script']);
 	gulp.watch('src/images/**/*', ['image']);
-	gulp.watch('src/**/*.styl', ['style']);
+	gulp.watch('src/style/**/*', ['style']);
   gulp.watch('src/**/*.pug', ['view']);
   gulp.watch('dist/**/*').on('change', () => {
     browserSync.reload();
@@ -27,10 +27,10 @@ gulp.task('browserSync', ['build'], function(){
 });
 
 gulp.task('style', () => {
-  gulp.src('src/style/*.styl')
+  gulp.src('src/style/**/*.styl')
     .pipe(plumber({
       handleError: function(error) {
-        console.log(error);
+        console.error(error);
         this.emit('end');
       }
     }))
@@ -59,7 +59,8 @@ gulp.task('script', () => {
     .pipe(webpack({
       output: {
         filename: '[name].js'
-      }
+      },
+      devtool: '#source-map'
     }))
     .pipe(gulp.dest('dist/js'))
 });
