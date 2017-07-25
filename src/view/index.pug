@@ -1,5 +1,11 @@
-!doctype html
-html
-  head
-    title To-do List
-  body
+include ./layout/structure.pug
+
+block content
+  header
+    nav.navegation-menu
+      button.navegation-item To-do
+      button.navegation-item Done
+  include ./components/cards.pug
+  footer
+    .btn-form_activate Adicionar to-do
+    include ./components/form-add.pug
