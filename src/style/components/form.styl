@@ -18,14 +18,19 @@
       display: block
       margin: 5px 0
     input
-      border: 1px dotted #42496e
-      border-radius: 5px
+      border: 1px solid lightgray
+      border-radius: 10px
       font-size: 0.925rem
-      font-style: italic
-      font-weight: 100
-      padding: 10px 16px
+      font-weight: 200
+      padding: 10px 12px
       width: 100%
+      &[type="date"]
+        color: darkgray
+        font-family: 'Rubik',sans-serif
+      &:focus
+        outline: none
+        border-color: darkgray 
   .btn-form_save
-    background: #069c68
+    background: darkgray
     margin: 50px auto 0
     padding: 8px 10px

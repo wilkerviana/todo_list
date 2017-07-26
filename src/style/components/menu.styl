@@ -1,15 +1,21 @@
 .navegation-menu
   display: flex
   .navegation-item
-    // border: 1px solid transparent
-    outline: 1px solid rgba(255,255,255,.8)
-    color: #ffffff
+    border: 1px solid gray
     font-size: 1.1em
     font-weight: 800
     padding: 15px 0
     text-transform: uppercase
     width: 50%
-    // &:nth-child(1)
-    //   border-bottom: 3px solid #FFCC70
-    // &:nth-child(2)
-    //   border-bottom: 3px solid #4158D0
+    a
+      color: black
+      text-decoration: none
+.btn-form_open
+  background: darkgray
+  margin: 12px auto
+  opacity: 1
+  padding: 10px 16px
+  visibility: visible
+  &._hide
+    opacity: 0
+    visibility: hidden

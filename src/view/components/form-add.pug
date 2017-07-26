@@ -1,12 +1,13 @@
-form#new-todo.form-todo
-  h2.form-title Nova to-do
-  fieldset
-    label Nome
-    input(type="text" placeholder="Digite o nome da tarefa...")
-  fieldset
-    label Finalizar em:
-    input(type="date")
-  button.btn-form_save Salvar to-do
+.overlay
+  form#new-todo.form-todo
+    h2.form-title Nova to-do
+    fieldset
+      label Nome
+      input(type="text" data-input="name" placeholder="Digite o nome da tarefa...")
+    fieldset
+      label Finalizar em:
+      input(type="date" data-input="date")
+    button.btn.btn-form_save Salvar to-do
 
-button.btn-form_close
-  i.fa.fa-remove.fa-4x
+  button.btn.btn-form_close
+    i.fa.fa-remove.fa-4x
