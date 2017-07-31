@@ -1,16 +1,37 @@
 const handleForm = require('./components/form.js');
+const doneCard = require('./components/done.js');
 
 function initialize() {
   handleForm();
   const btnSaveForm = document.querySelector('.btn-form_save');
   btnSaveForm.addEventListener('click', addTodo);
-
   appendEvents();
 }
 
 function appendEvents() {
-  const cards = document.querySelectorAll('.card');
+  const container = document.querySelector('.cards-todo');
+  const cards = [...container.querySelectorAll('.card')];
   cards.forEach(handleCard);
+  reorderCards();
+}
+
+function reorderCards(){
+  const container = document.querySelector('.cards-todo');
+  const cards = [...container.querySelectorAll('.card')];
+  cards
+    .sort((a,b) => {
+      const timerA = a.querySelector('.content-timer');
+      const timerB = b.querySelector('.content-timer');
+      
+      const [hoursA,minutesA] = timerA.textContent.split(':');
+      const [hoursB,minutesB] = timerB.textContent.split(':');
+
+      return +hoursA * 60 + +minutesA <= +hoursB * 60 + +minutesB ? -1 : 1;
+    })
+    .sort((a) => {
+      return a.getAttribute('data-dismissed') ? 1 : 0;
+    })
+    .forEach(card => container.appendChild(card));
 }
 
 
@@ -21,9 +42,16 @@ function appendEvents() {
 function handleCard(card) {
   const remove = card.querySelector('.btn-card_remove');
   const done = card.querySelector('.btn-card_done');
-  remove.addEventListener('click', () => card.remove());
+  const dismiss = card.querySelector('.btn-card_dismiss');
   done.addEventListener('click', () => {
-    console.log('done');
+    const titleCard = card.querySelectorAll('.card-title');
+    doneCard(titleCard);
+    card.remove();
+  });
+  remove.addEventListener('click', () => card.remove());
+  dismiss.addEventListener('click', () => {
+    card.setAttribute('data-dismissed',true);
+    reorderCards();
   });
 }
 
@@ -32,7 +60,7 @@ function addTodo(event){
   event.preventDefault();
   const name = document.querySelector('[data-input="name"]');
   const date = document.querySelector('[data-input="date"]');
-  const container = document.querySelector('.cards-container');
+  const container = document.querySelector('.cards-todo');
 
 
   let e = document.createElement('div');
@@ -40,14 +68,14 @@ function addTodo(event){
   let buttons = document.createElement('div');
   e.classList.add('card');
 
-  // cria descricao
+  // add description card
   description.classList.add('card-row');
   description.innerHTML = `<h2 class="card-title">${name.value}</h2>
                             <span class="card-timer">
                               <i class="card-timer"></i>
-                              <span>${date.value}</span>
+                              <span class="content-timer">${date.value}</span>
                             </span>`;
-  // cria botoes
+  // add buttons card
   buttons.classList.add('card-buttons');
   buttons.innerHTML = `<button class="btn-cards btn-card_done">
                         <i class="fa fa-check"></i>

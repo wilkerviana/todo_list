@@ -1,15 +1,16 @@
 .navegation-menu
   display: flex
+  background: lightblue
   .navegation-item
-    border: 1px solid gray
     font-size: 1.1em
     font-weight: 800
-    padding: 15px 0
     text-transform: uppercase
+    &[type="radio"]
+      display: none
+  label
+    background: #ccc
+    padding: 15px
     width: 50%
-    a
-      color: black
-      text-decoration: none
 .btn-form_open
   background: darkgray
   margin: 12px auto
